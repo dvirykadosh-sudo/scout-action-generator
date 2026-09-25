@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#25372b">
+  <title>מחולל פעולות דביר קדוש | שבט מעוז</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/9.5.1/index.iife.min.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">⚜</div>
+      <div>
+        <div class="brand-name">מחולל פעולות דביר קדוש</div>
+        <div class="brand-sub">שבט מעוז</div>
+      </div>
+    </div>
+    <div class="status"><span></span> מוכן ליצירת פעולה</div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-badge">SCOUT ACTION BUILDER</div>
+      <h1>פעולה חדשה, לפי הסגנון שלך</h1>
+      <p>
+        בחר נושא, זמן, מודל לחיקוי ומתודות. המערכת בונה פעולה חדשה,
+        בודקת את הזמנים ומוודאת שהמתודות עומדות בבחירה שלך.
+      </p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <span>01</span>
+        <div>
+          <h2>פרטי הפעולה</h2>
+          <p>מה אתה רוצה שהפעולה תעסוק בו?</p>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <label class="field">
+          <span>נושא הפעולה</span>
+          <input id="topic" maxlength="200" placeholder="לדוגמה: עבודת צוות, מנהיגות, אחריות">
+        </label>
+
+        <label class="field">
+          <span>זמן כולל, בדקות</span>
+          <input id="duration" type="number" min="5" max="600" step="1" placeholder="60">
+        </label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <span>02</span>
+        <div>
+          <h2>מודל לחיקוי</h2>
+          <p>העלה פעולה קיימת או הדבק טקסט שכתבת.</p>
+        </div>
+      </div>
+
+      <label class="dropzone" id="dropzone" for="referenceFile">
+        <input id="referenceFile" type="file" accept=".pdf,.doc,.docx,.txt,.md">
+        <div class="upload-icon">↑</div>
+        <strong>לחץ להעלאת קובץ</strong>
+        <small>PDF, Word או TXT, עד 10MB</small>
+        <div id="fileName" class="file-name"></div>
+      </label>
+
+      <div class="or"><span>או</span></div>
+
+      <label class="field">
+        <span>הדבק כאן פעולה קיימת</span>
+        <textarea id="referenceText" maxlength="30000" placeholder="הדבק את הפעולה כאן..."></textarea>
+      </label>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <span>03</span>
+        <div>
+          <h2>מתודות מאושרות</h2>
+          <p>המערכת תשתמש אך ורק במתודות שסימנת.</p>
+        </div>
+      </div>
+
+      <div id="methods" class="methods"></div>
+
+      <div class="quick-actions">
+        <button id="selectAll" type="button">בחר הכל</button>
+        <button id="clearAll" type="button">נקה הכל</button>
+      </div>
+    </section>
+
+    <section class="generate-wrap">
+      <button id="generate" class="generate">
+        <span>צור פעולה</span>
+        <span class="arrow">←</span>
+      </button>
+      <div id="loading" class="loading hidden">
+        <div class="loader"></div>
+        <div>
+          <strong>בונה ובודק את הפעולה...</strong>
+          <small>המערכת בודקת מתודות, זמנים ומבנה לפני הצגה.</small>
+        </div>
+      </div>
+      <div id="error" class="error hidden"></div>
+    </section>
+
+    <section id="resultPanel" class="panel result-panel hidden">
+      <div class="result-head">
+        <div class="panel-title">
+          <span>04</span>
+          <div>
+            <h2>הפעולה שלך</h2>
+            <p>אפשר לערוך את התוצאה לפני הייצוא.</p>
+          </div>
+        </div>
+
+        <div class="exports">
+          <button id="pdf" type="button">PDF</button>
+          <button id="word" type="button">Word</button>
+        </div>
+      </div>
+
+      <div id="result" class="result" contenteditable="true"></div>
+    </section>
+  </main>
+
+  <footer>
+    מחולל פעולות דביר קדוש · שבט מעוז
+  </footer>
+</body>
+</html>

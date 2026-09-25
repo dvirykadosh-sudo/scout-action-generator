@@ -1,0 +1,18 @@
+{
+  "name": "scout-action-generator",
+  "version": "2.0.0",
+  "private": true,
+  "description": "מחולל פעולות צופים חכם, דביר קדוש, שבט מעוז",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "multer": "^2.0.2",
+    "openai": "^6.0.0"
+  }
+}
